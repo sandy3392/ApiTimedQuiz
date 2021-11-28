@@ -1,6 +1,6 @@
 //variables to execute logic
 var questionIterator = 0;
-var timer = questions.length * 1000; //timeleft
+var timer = questions.length * 20; //timeleft
 var timing;
 var score = 0;
 // variables to refer dom elements
@@ -32,6 +32,7 @@ var startChallange = function(){
     
     getQuestions();
 };
+//function for a time check
 var coundownTimer = function(){
     timer--;
     timerId.textContent = timer;
@@ -40,7 +41,7 @@ var coundownTimer = function(){
     }
 };
 
-
+// fucntion to update the questions with options
 var getQuestions = function(){
     questionsTitle.innerHTML = questions[questionIterator].title;
     var questionArroptions = questions[questionIterator].options.length;
@@ -60,7 +61,7 @@ var getQuestions = function(){
         listItemEl.onclick= checkAnswer;
     }
 };
-
+//function to end the quiz when called upon
 var endQuiz = function() {
     questionsEl.setAttribute("class", "hide");
     resultScreen.removeAttribute("class", "hide");
@@ -68,12 +69,11 @@ var endQuiz = function() {
     finalscore.textContent = timer;
 
 };
+//function to updat the correct and wrong words at the bottom of the options
 var responceUpdate = function(res){
-
     responceEl.textContent =  res;
-
 };
-
+// function to validte the answer
 function checkAnswer(){
 
     if(this.value !== questions[questionIterator].answer) {
@@ -97,7 +97,7 @@ function checkAnswer(){
         getQuestions();  
     }
 };
-
+//function to save the highscore
 var saveHighScore = function(){
     var playerInitials = initials.value;
     if (playerInitials !== ""){
@@ -123,10 +123,12 @@ function checkForEnterKey(event) {
     }
 };
 
+//EVENTS
 //event for saving the high score
 submitBtn.addEventListener("click",saveHighScore);
 
-//initialsEl.addEventListener("keypress",checkForEnterKey);
+//event for enter key on teh value option
+initialsEl.addEventListener("keypress",checkForEnterKey);
 
 //event for starting the Quiz
 startBtn.addEventListener("click", startChallange);

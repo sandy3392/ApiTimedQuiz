@@ -1,26 +1,19 @@
+//function to show the highscores list
 var showHighScores = function(){
     var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
     var highscoreiterator = 1;
-    console.log(highscores);
 
-    highscores.forEach(function(scores){
-        
+    highscores.forEach(function(scores){       
         var highscoreiteratornumber = highscoreiterator + ".";
         var listscoreEl = document.createElement("li");
         listscoreEl.textContent = highscoreiteratornumber + "  " + scores.initials + " = " + scores.score;
         var olEl = document.getElementById("highscore");
         olEl.appendChild(listscoreEl);
-        highscoreiteratornumber++;
+        highscoreiterator++;
     });
-        //listscoreEl.textContent = (highscores[0].initials, highscores[0].score);
-    // listscoreEl.setAttribute("value",highscores[0].initials);
-    // listscoreEl.innerHTML= highscores[0].initials;
-
-    
-
-    
 };
 
+//function to clear the highscores from the sessionstorage
 function clearHighscores() {
   window.localStorage.removeItem("highscores");
   window.location.reload();
