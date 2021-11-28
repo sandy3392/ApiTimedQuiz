@@ -1,6 +1,7 @@
 # ApiTimedQuiz
 
 # Below are the steps for this project 
+for live action please visit https://sandy3392.github.io/ApiTimedQuiz/index.html
 
 this is a code quiz
 WHEN you  click the start button
